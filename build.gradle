@@ -3,7 +3,7 @@ plugins {
     id 'war'
 }
 
-group 'com.ilovementmei.ccstraining2020'
+group 'com.ilovemengmei.ccstraining2020'
 version '1'
 
 sourceCompatibility = 1.8
@@ -25,5 +25,7 @@ dependencies {
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
     // https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api
     providedCompile group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.3'
+    // https://mvnrepository.com/artifact/com.alibaba/fastjson
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.72'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
