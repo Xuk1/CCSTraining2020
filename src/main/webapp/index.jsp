@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>后台管理系统</title>
+  <title>房屋租赁系统-商户版</title>
   <link rel="stylesheet" href="layui/css/layui.css" media="all">
   <script type="text/javascript" src="layui/layui.js"></script>
 </head>
@@ -13,7 +15,7 @@
 	
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
-    <div class="layui-logo">后台管理系统</div>
+    <div class="layui-logo">房屋租赁系统-商户版</div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
