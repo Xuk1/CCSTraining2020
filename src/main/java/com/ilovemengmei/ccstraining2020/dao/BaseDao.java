@@ -1,4 +1,4 @@
-package com.ilovementmei.ccstraining2020.dao;
+package com.ilovemengmei.ccstraining2020.dao;
 
 import java.util.List;
 
