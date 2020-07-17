@@ -21,8 +21,6 @@ public class LoginServlet extends BaseServlet {
         String password = request.getParameter("password");
         User user = userDao.findByUsername(username);
         if(user != null){
-            System.out.println(user.toString());
-            System.out.println(HashUtil.md5(password));
             if(!HashUtil.md5(password).equalsIgnoreCase(user.getPassword())){
                 response.setStatus(0);
             }else{
