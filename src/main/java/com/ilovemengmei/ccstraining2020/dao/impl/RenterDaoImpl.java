@@ -3,7 +3,7 @@ package com.ilovemengmei.ccstraining2020.dao.impl;
 import com.ilovemengmei.ccstraining2020.dao.RenterDao;
 import com.ilovemengmei.ccstraining2020.domain.Renter;
 import com.ilovemengmei.ccstraining2020.domain.vo.Order;
-import com.ilovemengmei.ccstraining2020.utils.JDBCUtils;
+import com.ilovemengmei.ccstraining2020.util.JDBCUtil;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class RenterDaoImpl implements RenterDao {
 
-    private QueryRunner qr = new QueryRunner(JDBCUtils.getInstance().getDataSource());
+    private QueryRunner qr = new QueryRunner(JDBCUtil.getInstance().getDataSource());
 
     @Override
     public List<Renter> findAll() {
@@ -25,10 +25,32 @@ public class RenterDaoImpl implements RenterDao {
         return null;
     }
 
+    public List<Renter> findAll(String landlord) {
+        String sql = "SELECT * FROM renter WHERE landlord=" + landlord;
+        try {
+            return qr.query(sql, new BeanListHandler<>(Renter.class));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @Override
     public List<Order> findAllOrders() {
-        String sql = "SELECT renter.id,renter.userName,renter.realName,rorder.orderId,rorder.orderDate,rorder.orderState " +
-                "FROM renter INNER JOIN rorder ON rorder.userId=renter.id";
+        String sql = "SELECT renter.id,renter.userName,renter.realName,orders.orderId,orders.orderDate,orders.orderState " +
+                "FROM renter INNER JOIN orders ON orders.userId=renter.id";
+        try {
+            return qr.query(sql, new BeanListHandler<>(Order.class));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Order> findAllOrders(String landlord) {
+        String sql = "SELECT renter.id,renter.userName,renter.realName,orders.orderId,orders.orderDate,orders.orderState " +
+                "FROM renter INNER JOIN orders ON orders.userId=renter.id WHERE landlord=" + landlord;
         try {
             return qr.query(sql, new BeanListHandler<>(Order.class));
         } catch (SQLException e) {

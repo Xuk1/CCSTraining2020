@@ -9,4 +9,8 @@ import java.util.List;
 public interface RenterDao extends BaseDao<Renter> {
 
     List<Order> findAllOrders();
+
+    List<Renter> findAll(String landlord);
+
+    List<Order> findAllOrders(String landlord);
 }

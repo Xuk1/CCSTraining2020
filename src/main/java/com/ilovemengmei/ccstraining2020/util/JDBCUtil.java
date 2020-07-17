@@ -1,16 +1,16 @@
-package com.ilovemengmei.ccstraining2020.utils;
+package com.ilovemengmei.ccstraining2020.util;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import java.beans.PropertyVetoException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class JDBCUtils {
+public class JDBCUtil {
 
-    private static final JDBCUtils INSTANCE = new JDBCUtils();
+    private static final JDBCUtil INSTANCE = new JDBCUtil();
     private ComboPooledDataSource dataSource;
 
-    private JDBCUtils(){
+    private JDBCUtil(){
         try {
             dataSource = new ComboPooledDataSource();
             dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
@@ -26,7 +26,7 @@ public class JDBCUtils {
         }
     }
 
-    public static JDBCUtils getInstance() {
+    public static JDBCUtil getInstance() {
         return INSTANCE;
     }
 

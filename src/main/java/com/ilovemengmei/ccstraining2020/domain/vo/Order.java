@@ -5,7 +5,7 @@ public class Order {
     private int id;
     private String userName;
     private String realName;
-    private int orderId;
+    private int orderAmount;
     private String orderDate;
     private String orderState;
 
@@ -18,13 +18,7 @@ public class Order {
         this.id = id;
     }
 
-    public int getOrderId() {
-        return orderId;
-    }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
 
     public String getOrderDate() {
         return orderDate;
@@ -58,13 +52,21 @@ public class Order {
         this.realName = realName;
     }
 
+    public int getOrderAmount() {
+        return orderAmount;
+    }
+
+    public void setOrderAmount(int orderAmount) {
+        this.orderAmount = orderAmount;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
                 ", userName='" + userName + '\'' +
                 ", realName='" + realName + '\'' +
-                ", orderId=" + orderId +
+                ", orderAmount=" + orderAmount +
                 ", orderDate='" + orderDate + '\'' +
                 ", orderState='" + orderState + '\'' +
                 '}';
