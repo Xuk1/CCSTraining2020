@@ -3,6 +3,7 @@ package com.ilovemengmei.ccstraining2020.domain;
 public class Renter {
 
     private int id;
+    private String landlord;
     private String userName;
     private String realName;
     private String rentedHouseId;
@@ -57,10 +58,19 @@ public class Renter {
         this.endingDate = endingDate;
     }
 
+    public void setLandlord(String landlord) {
+        this.landlord = landlord;
+    }
+
+    public String getLandlord() {
+        return landlord;
+    }
+
     @Override
     public String toString() {
         return "Renter{" +
                 "id=" + id +
+                ", landlord='" + landlord + '\'' +
                 ", userName='" + userName + '\'' +
                 ", realName='" + realName + '\'' +
                 ", rentedHouseId='" + rentedHouseId + '\'' +

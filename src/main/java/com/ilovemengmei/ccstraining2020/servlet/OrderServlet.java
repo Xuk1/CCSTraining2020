@@ -16,44 +16,21 @@ import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet("/order")
-public class OrderServlet extends HttpServlet {
+public class OrderServlet extends BaseServlet {
 
     private RenterDao renterDao = new RenterDaoImpl();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response){
-        response.setHeader("content-type", "text/html;charset=UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        /* 允许跨域的主机地址 */
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        /* 允许跨域的请求方法GET, POST, HEAD 等 */
-        response.setHeader("Access-Control-Allow-Methods", "*");
-        /* 重新预检验跨域的缓存时间 (s) */
-        response.setHeader("Access-Control-Max-Age", "3600");
-        /* 允许跨域的请求头 */
-        response.setHeader("Access-Control-Allow-Headers", "*");
-        /* 是否携带cookie */
-        response.setHeader("Access-Control-Allow-Credentials", "true");
-        try {
-            String keyword = request.getParameter("keyword");
-            //调用dao获得数据
-            List<Order> list = renterDao.findAllOrders();
-            if(keyword != null){
-                list.removeIf(order -> !order.getRealName().contains(keyword));
-            }
-            //把JSON数据作为流返回给界面
-            String jsonStr = JSON.toJSONString(list);
-            PrintWriter out = response.getWriter();//响应对象的输出流:管道
-            out.print(jsonStr);//jsonStr通过管道发送出去
-            out.flush();
-            out.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        String username = (String)request.getSession().getAttribute("username");
+        if(username == null) return;
+        preprocess(response);
+        String keyword = request.getParameter("keyword");
+        List<Order> list = renterDao.findAllOrders();
+        if (keyword != null) {
+            list.removeIf(order -> !order.getRealName().contains(keyword));
         }
+        write(response, JSON.toJSONString(list));
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
-    }
 }
