@@ -5,7 +5,7 @@ public class Order {
     private int id;
     private String userName;
     private String realName;
-    private int orderAmount;
+    private int orderMonth;
     private String orderDate;
     private String orderState;
 
@@ -52,12 +52,12 @@ public class Order {
         this.realName = realName;
     }
 
-    public int getOrderAmount() {
-        return orderAmount;
+    public int getOrderMonth() {
+        return orderMonth;
     }
 
-    public void setOrderAmount(int orderAmount) {
-        this.orderAmount = orderAmount;
+    public void setOrderMonth(int orderMonth) {
+        this.orderMonth = orderMonth;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class Order {
                 "id=" + id +
                 ", userName='" + userName + '\'' +
                 ", realName='" + realName + '\'' +
-                ", orderAmount=" + orderAmount +
+                ", orderMonth=" + orderMonth +
                 ", orderDate='" + orderDate + '\'' +
                 ", orderState='" + orderState + '\'' +
                 '}';

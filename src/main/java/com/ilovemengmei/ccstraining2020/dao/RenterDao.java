@@ -12,5 +12,5 @@ public interface RenterDao extends BaseDao<Renter> {
 
     List<Renter> findAll(int landlordId);
 
-    List<Order> findAllOrders(String landlord);
+    List<Order> findAllOrders(int landlordId);
 }

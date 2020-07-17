@@ -48,9 +48,9 @@ public class RenterDaoImpl implements RenterDao {
     }
 
     @Override
-    public List<Order> findAllOrders(String landlord) {
-        String sql = "SELECT renter.id,renter.userName,renter.realName,orders.orderId,orders.orderDate,orders.orderState " +
-                "FROM renter INNER JOIN orders ON orders.userId=renter.id WHERE landlord=" + landlord;
+    public List<Order> findAllOrders(int landlordId) {
+        String sql = "SELECT orders.id,renter.userName,renter.realName,orders.orderMonth,orders.orderDate,orders.orderState " +
+                "FROM renter INNER JOIN orders ON orders.userId=renter.id WHERE renter.landlordId=" + landlordId;
         try {
             return qr.query(sql, new BeanListHandler<>(Order.class));
         } catch (SQLException e) {

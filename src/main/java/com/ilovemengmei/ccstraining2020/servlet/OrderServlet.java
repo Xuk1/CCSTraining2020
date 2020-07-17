@@ -16,11 +16,11 @@ public class OrderServlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-        String username = (String)request.getSession().getAttribute("username");
-        if(username == null) return;
+        int id = (int)request.getSession().getAttribute("id");
+        if(id == 0) return;
         preprocess(response);
         String keyword = request.getParameter("keyword");
-        List<Order> list = renterDao.findAllOrders(username);
+        List<Order> list = renterDao.findAllOrders(id);
         if (keyword != null) {
             list.removeIf(order -> !order.getRealName().contains(keyword));
         }

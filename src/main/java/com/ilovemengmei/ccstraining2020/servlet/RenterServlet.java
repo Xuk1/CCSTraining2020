@@ -21,8 +21,6 @@ public class RenterServlet extends BaseServlet {
         preprocess(response);
         String keyword = request.getParameter("keyword");
         List<Renter> list = renterDao.findAll(id);
-        System.out.println(id);
-        System.out.println(list);
         if(keyword != null){
             list.removeIf(renter -> !renter.getRealName().contains(keyword));
         }
