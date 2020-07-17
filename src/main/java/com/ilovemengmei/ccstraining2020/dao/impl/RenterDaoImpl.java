@@ -25,8 +25,8 @@ public class RenterDaoImpl implements RenterDao {
         return null;
     }
 
-    public List<Renter> findAll(String landlord) {
-        String sql = "SELECT * FROM renter WHERE landlord=" + landlord;
+    public List<Renter> findAll(int landlordId) {
+        String sql = "SELECT * FROM renter WHERE landlordId=" + landlordId;
         try {
             return qr.query(sql, new BeanListHandler<>(Renter.class));
         } catch (SQLException e) {

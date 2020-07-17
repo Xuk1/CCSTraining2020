@@ -2,15 +2,13 @@ package com.ilovemengmei.ccstraining2020.dao;
 
 
 import com.ilovemengmei.ccstraining2020.domain.Renter;
+import com.ilovemengmei.ccstraining2020.domain.User;
 import com.ilovemengmei.ccstraining2020.domain.vo.Order;
 
 import java.util.List;
 
-public interface RenterDao extends BaseDao<Renter> {
+public interface UserDao extends BaseDao<User> {
 
-    List<Order> findAllOrders();
+    User findByUsername(String username);
 
-    List<Renter> findAll(int landlordId);
-
-    List<Order> findAllOrders(String landlord);
 }

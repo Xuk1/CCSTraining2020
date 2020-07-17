@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +9,14 @@
   <script type="text/javascript" src="layui/layui.js"></script>
 </head>
 <body class="layui-layout-body">
-	
-	
+
+<%
+  if(session.getAttribute("username") == null) {
+    String site = "/main.html";
+    response.setStatus(response.SC_MOVED_TEMPORARILY);
+    response.setHeader("Location", site);
+  }
+%>
 	
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
@@ -19,7 +26,7 @@
       <li class="layui-nav-item">
         <a href="javascript:;">
           <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-          zlt
+          <%=session.getAttribute("username")%>
         </a>
         <dl class="layui-nav-child">
           <dd><a href="">基本资料</a></dd>
