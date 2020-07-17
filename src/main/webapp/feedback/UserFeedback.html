@@ -6,23 +6,23 @@
     <title>用户反馈</title>
     <style type="text/css">
         .Content-Main{
-            max-width: 1500px;
+            max-width: 1000px;
             margin: auto;
-            padding: 100px 90px 100px 90px;
+            padding: 80px 100px 80px 100px;
             font: 20px "Helvetica Neue", Helvetica, Arial, sans-serif;
             text-shadow: 3px 3px 3px #808080;
-            border: 3px solid #DDD;
+            border: 3px solid #0f4c75;
             border-radius: 15px;
             color: #888;
-            background: #393e46;
+            background-image: url("bkg01.jpg");
         }
         .Content-Main h1{
             display: block;
             padding: 0px 0px 10px 40px;
             margin: -10px -30px 30px -30px;
             font: 30px "Helvetica Neue", Helvetica, Arial, sans-serif;
-            border-bottom: 1px solid #DADADA;
-            color: #888;
+            border-bottom: 1px solid #0f4c75;
+            color: #394989;
         }
         .Content-Main h1>span{
             display: block;
@@ -40,7 +40,7 @@
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-weight: bold;
             text-align: right;
-            color: #e4e3e3;
+            color: #394989;
         }
         .Content-Main input[type="text"],.Content-Main textarea{
             width: 70%;
@@ -51,13 +51,14 @@
             margin-top: 2px;
             line-height: 15px;
             border-radius: 4px;
-            border: 1px solid #CCC;
+            border: 1.5px solid #0f4c75;
             color: #333;
             -webkit-border-radius: 4px;
             -moz-border-radius: 4px;
             -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
             box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
             -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            background: transparent;
         }
         .select1{
             width: 71%;
@@ -68,37 +69,39 @@
             line-height: 15px;
             padding: 5px 0px 5px 5px;
             border-radius: 4px;
-            border: 1px solid #CCC;
+            border: 1.5px solid #0f4c75;
             color: #333;
             -webkit-border-radius: 4px;
             -moz-border-radius: 4px;
             -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
             box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
             -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            background: transparent;
         }
         .select2{
             width: 13%;
             border-radius: 4px;
-            border: 1px solid #CCC;
+            border: 1.5px solid #0f4c75;
             color: #333;
             -webkit-border-radius: 4px;
             -moz-border-radius: 4px;
             -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
             box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
             -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            background: transparent;
         }
         .Content-Main textarea{
             width: 70%;
             height: 100px;
             padding: 5px 0px 0px 5px;
-            background: #FFF;
+            background: transparent;
         }
         .button{
             padding: 10px 25px 10px 25px;
             margin-left: 50%;
             border-radius: 4px;
-            border:1px solid #CCC;
-            background: #FFF;
+            border:1.5px solid #0f4c75;
+            background: transparent;
             color: #333;
         }
         .button:hover{
@@ -113,33 +116,33 @@
     <div class="Content-Main1">
         <h1>用户反馈</h1>
     </div>
-    <form action="FeedbackServlet" method="post" class="form-report">
+    <form action="" method="post" class="form-report">
         <label>
-            <span>Content:</span>
+            <span>地址:</span>
             <select name="select2" class="select2">
-                <option value="Email">Email：</option>
-                <option value="Phone number">Phone number：</option>
+                <option value="Email">邮箱：</option>
+                <option value="Phone number">电话号码：</option>
                 <option value="QQ">QQ：</option>
-                <option value="User name">User name：</option>
+                <option value="User name">用户名：</option>
             </select>
             <input type="text" placeholder="">
         </label>
-        <p></p>           
+        <p></p>
         <label>
-            <span>Sex:</span>
+            <span>性别:</span>
             <select name="select1" class="select1">
-                <option value="Male">Male</option>
-                <option value="General Question">Female</option>
+                <option value="Male"">男</option>
+                <option value="Female">女</option>
             </select>
         </label>
         <p></p>
         <label>
-            <span>Message:</span>
+            <span>内容:</span>
             <textarea id="mesaage" name="message" placeholder="Your can tell me"></textarea>
         </label>
         <p></p>
         <label>
-            <span>Subject:</span>
+            <span>方面:</span>
             <select name="select1" class="select1">
                 <option value="Job Inquiry">Job Inquiry</option>
                 <option value="General Question">General Question</option>
@@ -148,7 +151,7 @@
         <p></p>
         <p></p>
         <label>
-            <input type="button" class="button" value="Send">
+            <input type="button" class="button" value="发送">
         </label>
     </form>
 </div>
