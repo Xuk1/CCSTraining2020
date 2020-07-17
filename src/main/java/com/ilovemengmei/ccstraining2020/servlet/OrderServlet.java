@@ -3,16 +3,10 @@ package com.ilovemengmei.ccstraining2020.servlet;
 import com.alibaba.fastjson.JSON;
 import com.ilovemengmei.ccstraining2020.dao.RenterDao;
 import com.ilovemengmei.ccstraining2020.dao.impl.RenterDaoImpl;
-import com.ilovemengmei.ccstraining2020.domain.Renter;
 import com.ilovemengmei.ccstraining2020.domain.vo.Order;
-
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet("/order")
@@ -26,7 +20,7 @@ public class OrderServlet extends BaseServlet {
         if(username == null) return;
         preprocess(response);
         String keyword = request.getParameter("keyword");
-        List<Order> list = renterDao.findAllOrders();
+        List<Order> list = renterDao.findAllOrders(username);
         if (keyword != null) {
             list.removeIf(order -> !order.getRealName().contains(keyword));
         }
