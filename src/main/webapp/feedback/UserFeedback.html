@@ -113,13 +113,14 @@
             border-color: #ADADAD;
         }
     </style>
+    <script type="text/javascript" src="../layui/layui.js"></script>
 </head>
 <body>
 <div class="Content-Main">
     <div class="Content-Main1">
         <h1>用户反馈</h1>
     </div>
-    <form action="../feedback" method="post" class="form-report">
+    <form id="feedback" action="../feedback" method="post" class="form-report">
         <label>
             <span>地址:</span>
             <select name="addressType" class="addressType">
@@ -150,7 +151,7 @@
         <p></p>
         <p></p>
         <label>
-            <input type="submit" class="submit" value="发送"  onclick="javascrtpt:window.location.href='succeed.html'">
+            <input type="submit" class="submit" value="发送">
         </label>
     </form>
 </div>
