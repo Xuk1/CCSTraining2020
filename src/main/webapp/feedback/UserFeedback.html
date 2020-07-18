@@ -78,7 +78,7 @@
             -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
             background-color: rgba(0, 0, 0, 0.2);
         }
-        .address{
+        .addressType{
             width: 13%;
             margin-top: 5px;
             padding: 5px 0px 5px 5px;
@@ -121,13 +121,13 @@
     <form action="../feedback" method="post" class="form-report">
         <label>
             <span>地址:</span>
-            <select name="address" class="address">
+            <select name="addressType" class="addressType">
                 <option value="Email">邮箱</option>
                 <option value="Phone number">电话号码</option>
                 <option value="QQ">QQ</option>
                 <option value="User name">昵称</option>
             </select>
-            <input type="text" placeholder="" name="addressInput">
+            <input type="text" placeholder="" name="address">
         </label>
         <p></p>
         <label>
@@ -140,7 +140,7 @@
         <p></p>
         <label>
             <span>内容:</span>
-            <textarea id="mesaage" name="message" placeholder="请输入内容"></textarea>
+            <textarea id="content" name="content" placeholder="请输入内容"></textarea>
         </label>
         <p></p>
         <label>
