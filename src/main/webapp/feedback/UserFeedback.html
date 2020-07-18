@@ -60,7 +60,7 @@
             -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
             background-color: rgba(0, 0, 0, 0.2);
         }
-        .select1{
+        .sex{
             width: 71%;
             height: 40px;
             margin-bottom: 16px;
@@ -78,7 +78,7 @@
             -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
             background-color: rgba(0, 0, 0, 0.2);
         }
-        .select2{
+        .address{
             width: 13%;
             margin-top: 5px;
             padding: 5px 0px 5px 5px;
@@ -121,18 +121,18 @@
     <form action="../feedback" method="post" class="form-report">
         <label>
             <span>地址:</span>
-            <select name="select2" class="select2">
+            <select name="address" class="address">
                 <option value="Email">邮箱</option>
                 <option value="Phone number">电话号码</option>
                 <option value="QQ">QQ</option>
                 <option value="User name">昵称</option>
             </select>
-            <input type="text" placeholder="">
+            <input type="text" placeholder="" name="addressInput">
         </label>
         <p></p>
         <label>
             <span>性别:</span>
-            <select name="select1" class="select1">
+            <select name="sex" class="sex">
                 <option value="Male">男</option>
                 <option value="Female">女</option>
             </select>
