@@ -97,7 +97,7 @@ layui.use('element', function(){
       main.find("#ifr").remove();
       main.append('<iframe src="statistics/myLedger.html" id="ifr" style="width:100%;height:100%"></iframe>')
     }
-  })
+  });
 });
 </script>
 </body>
