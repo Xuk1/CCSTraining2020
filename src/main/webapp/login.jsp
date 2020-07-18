@@ -78,7 +78,7 @@
 		<div class="layui-form-item">
 			<button class="layui-btn layui-block" lay-filter="login" lay-submit="">登录</button>
 		</div>
-		没有账户？<a href="/register.html">点击注册</a>
+		没有账户？<a href="${pageContext.request.contextPath}/register.jsp">点击注册</a>
 	</form>
 	<script type="text/javascript" src="layui/layui.js"></script>
 	<!-- <script type="text/javascript" src="/js/cache.js"></script> -->
