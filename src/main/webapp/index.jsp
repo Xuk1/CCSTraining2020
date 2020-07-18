@@ -42,6 +42,9 @@
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree">
         <li class="layui-nav-item">
+          <a href="javascript:;">主页</a>
+        </li>
+        <li class="layui-nav-item">
           <a class="" href="javascript:;">房产管理</a>
           <dl class="layui-nav-child">
             <dd><a href="javascript:;">我的房产</a></dd>
@@ -52,11 +55,7 @@
           <a href="javascript:;">租客管理</a>
         </li>
         <li class="layui-nav-item">
-          <a href="javascript:;">统计报表</a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;">租客订单</a></dd>
-            <dd><a href="javascript:;">我的账本</a></dd>
-          </dl>
+          <a href="javascript:;">租客订单</a>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">反馈</a>
@@ -66,8 +65,7 @@
   </div>
   
   <div id="main" class="layui-body">
-    <!-- 内容主体区域 -->
-    
+    <iframe src="home.html" id="ifr" style="width:100%;height:100%"></iframe>
   </div>
   
   <div class="layui-footer" >
@@ -93,9 +91,9 @@ layui.use('element', function(){
     }else if(text === "反馈"){
       main.find("#ifr").remove();
       main.append('<iframe src="feedback/UserFeedback.html" id="ifr" style="width:100%;height:100%"></iframe>')
-    }else if(text === "我的帐本"){
+    }else if(text === "主页"){
       main.find("#ifr").remove();
-      main.append('<iframe src="statistics/myLedger.html" id="ifr" style="width:100%;height:100%"></iframe>')
+      main.append('<iframe src="home.html" id="ifr" style="width:100%;height:100%"></iframe>')
     }
   });
 });
