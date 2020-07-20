@@ -8,7 +8,7 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="icon" href="/favicon.ico">
+	<link rel="icon" href="${pageContext.request.contextPath}/logo2.jpg">
 	<link rel="stylesheet" href="layui/css/layui.css" media="all">
 	<link id="layuicss-layer" rel="stylesheet" href="http://admin.dataoke.com/layui/css/modules/layer/default/layer.css?v=3.1.1" media="all">
 	<style>

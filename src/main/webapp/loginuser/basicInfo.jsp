@@ -1,3 +1,6 @@
+<%@ page import="com.ilovemengmei.ccstraining2020.dao.UserDao" %>
+<%@ page import="com.ilovemengmei.ccstraining2020.dao.impl.UserDaoImpl" %>
+<%@ page import="com.ilovemengmei.ccstraining2020.domain.User" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 
@@ -12,7 +15,11 @@
     <script type="text/javascript" src="../layui/layui.js"></script>
 </head>
 
-<body onload="load();post();">
+<body onload="load();">
+<%
+UserDao userDao = new UserDaoImpl();
+User user = userDao.findById((int)session.getAttribute("id"));
+%>
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
     <legend>我的个人资料</legend>
 </fieldset>
@@ -37,17 +44,11 @@
                         <div class="layui-form-item">
                         <label for="L_email" class="layui-form-label">邮箱</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="email" name="email" required lay-verify="email" autocomplete="off" value=<%=session.getAttribute("email")%> class="layui-input" disabled style="cursor:not-allowed !important;">
+                            <input type="text" id="email" name="email" required lay-verify="email" autocomplete="off" value=<%=user.getEmail()%> class="layui-input" disabled style="cursor:not-allowed !important;">
                         </div>
                         <div class="layui-form-mid layui-word-aux">
                             您的邮箱尚未激活
                             <a href="" class="layui-btn layui-btn-sm layui-btn-normal" style="position: relative; top: -2px;">立即激活邮箱</a>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label for="L_email" class="layui-form-label">房产数量</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="houseAmount" name="houseAmount" required lay-verify="houseAmount" autocomplete="off" value="" class="layui-input" disabled style="cursor:not-allowed !important;">
                         </div>
                     </div>
                 </form>
@@ -57,19 +58,17 @@
                 <div class="layui-form layui-form-pane layui-tab-item">
                     <div class="layui-form-item">
                         <div style="width: 650px; position: relative; left:25%;">
-                        <div class="avatar-add">
-                            <p>建议尺寸168*168，支持jpg、png、gif，最大不能超过50KB</p>
-                            <button type="button" class="layui-btn upload-img">
-                                <i class="layui-icon"></i>
-                                上传头像
-                            </button>
-                            <input class="layui-upload-file" type="file" accept name="file">
-                            <img id="picture" src=""/>
-                            <span class="loading"></span>
-
-
-                        </div>
+                            <div class="avatar-add">
+                                <p>建议尺寸168*168，支持jpg、png、gif，最大不能超过50KB</p>
+                                <button type="button" class="layui-btn" id="profilePhoto">
+                                    <i class="layui-icon">&#xe681;</i>
+                                    上传头像
+                                </button>
+                                <input class="layui-upload-file" type="file" accept name="file">
+                                <img id="picture" src="<%=user.getProfilePhoto()%>" width="100px" height="100px"/>
+                                <span class="loading"></span>
                             </div>
+                        </div>
                     </div>
                 </div>
                 <div class="layui-form layui-form-pane layui-tab-item">
@@ -80,8 +79,7 @@
                                 <table class="layui-table" lay-skin="nob">
                                     <tbody>
                                     <tr>
-                                        <td>当前余额：<span class="price">1200.00</span></td>
-                                        <td>账户积分：120000</td>
+                                        <td>当前余额：<span class="price"><%=user.getBalance()%></span></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -95,13 +93,7 @@
 
 </div>
 </div>
-<!-- 获取头像-->
-<script type="text/javascript">
-    function load(){
-        var src = window.parent.document.getElementById("photo").src;
-        document.getElementById("picture").src=src;
-        }
-</script>
+
 
 <script>
     layui.use('element', function(){
@@ -146,29 +138,29 @@
 
     });
 </script>
-<script type="text/javascript" src="../assets/jquery-3.2.1.min.js"></script>
-<!-- 页面加载时自动运行-->
 <script>
-    function post(){
-       // alert("test");
-        $.ajax({
-            url:"../basicInfo",
-            type:"post",
-            data:{'test':'test'},   //测试数据
-            dataType:"json",
-            crossDomain: true,
-            error:function () {
-                console.log("ajax请求数据失败！");
-            },
-            success: function (data) {
-                //浏览器把接受到的json数据作为js对象，可通过.调用属性
-                //返回值json:（邮箱email + 房产数量houseAmount
-                $("#email").value = data.email;
-                $("#houseAmount").value = data.houseAmount;
-            }
-        })
-    }
-</script>
+    layui.use('upload', function(){
+        var upload = layui.upload;
 
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#profilePhoto' //绑定元素
+            ,url: '../upload' //上传接口
+            ,done: function(res){
+                layer.open({
+                    title: '萌租房'
+                    ,content: '上传成功！'
+                    ,btn: ['确定']
+                    ,btn1: function(){
+                        location.reload();
+                    }
+                });
+            }
+            ,error: function(){
+                //请求异常回调
+            }
+        });
+    });
+</script>
 </body>
 </html>

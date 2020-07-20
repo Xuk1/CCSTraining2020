@@ -3,6 +3,8 @@ package com.ilovemengmei.ccstraining2020.servlet;
 import com.alibaba.fastjson.JSONObject;
 import com.ilovemengmei.ccstraining2020.dao.UserDao;
 import com.ilovemengmei.ccstraining2020.dao.impl.UserDaoImpl;
+import com.ilovemengmei.ccstraining2020.domain.User;
+import com.ilovemengmei.ccstraining2020.util.HashUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,6 +37,9 @@ public class RegisterServlet extends BaseServlet{
             return;
         }
         String email = request.getParameter("email");
-        System.out.println(username);
+        User user = new User(username, HashUtil.md5(password),email,"../logo1.jpg",0);
+        userDao.insert(user);
+        data.put("status",1);
+        response.getWriter().write(data.toJSONString());
     }
 }

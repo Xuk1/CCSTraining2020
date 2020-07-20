@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="com.ilovemengmei.ccstraining2020.dao.UserDao" %>
+<%@ page import="com.ilovemengmei.ccstraining2020.dao.impl.UserDaoImpl" %>
+<%@ page import="com.ilovemengmei.ccstraining2020.domain.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,15 +9,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>房屋租赁系统-商户版</title>
   <link rel="stylesheet" href="layui/css/layui.css" media="all">
+  <link rel="icon" href="${pageContext.request.contextPath}/logo2.jpg">
   <script type="text/javascript" src="layui/layui.js"></script>
+  <script type="text/javascript" charset="utf-8"  src="js/L2Dwidget.0.min.js"></script>
+  <script type="text/javascript" charset="utf-8"  src="js/L2Dwidget.min.js"></script>
+  <script type="text/javascript">
+    L2Dwidget.init({"display": {
+        "superSample": 2,
+        "width": 200,
+        "height": 400,
+        "position": "right",
+        "hOffset": 0,
+        "vOffset": 0
+      }
+    });
+  </script>
 </head>
 <body class="layui-layout-body">
-
 <%
+  String profilePhoto = "";
   if(session.getAttribute("username") == null) {
     String site = "/main.html";
     response.setStatus(response.SC_MOVED_TEMPORARILY);
     response.setHeader("Location", site);
+  }else{
+    UserDao userDao = new UserDaoImpl();
+    User user = userDao.findById((int)session.getAttribute("id"));
+    profilePhoto = user.getProfilePhoto();
   }
 %>
 <div class="layui-layout layui-layout-admin">
@@ -24,7 +45,7 @@
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
         <a href="javascript:;">
-          <img id="photo" src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          <img id="photo" src="<%=profilePhoto%>" class="layui-nav-img">
           <%=session.getAttribute("username")%>
         </a>
         <dl class="layui-nav-child">
@@ -104,19 +125,6 @@ layui.use('element', function(){
     }
   })
 });
-</script>
-<script type="text/javascript" charset="utf-8"  src="js/L2Dwidget.0.min.js"></script>
-<script type="text/javascript" charset="utf-8"  src="js/L2Dwidget.min.js"></script>
-<script type="text/javascript">
-  L2Dwidget.init({"display": {
-      "superSample": 2,
-      "width": 200,
-      "height": 400,
-      "position": "right",
-      "hOffset": 0,
-      "vOffset": 0
-    }
-  });
 </script>
 </body>
 </html>

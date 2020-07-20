@@ -6,6 +6,19 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private String profilePhoto;
+    private double balance;
+
+    public User() {
+    }
+
+    public User(String username, String password, String email, String profilePhoto, double balance) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.profilePhoto = profilePhoto;
+        this.balance = balance;
+    }
 
     public String getPassword() {
         return password;
@@ -39,6 +52,22 @@ public class User {
         this.email = email;
     }
 
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public String getProfilePhoto() {
+        return profilePhoto;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -46,6 +75,8 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", profilePhoto='" + profilePhoto + '\'' +
+                ", balance=" + balance +
                 '}';
     }
 }

@@ -5,7 +5,6 @@ import com.ilovemengmei.ccstraining2020.domain.User;
 import com.ilovemengmei.ccstraining2020.util.JDBCUtil;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -31,15 +30,21 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User findById(int id) {
-        throw new UnsupportedOperationException();
+        String sql = "SELECT * FROM user WHERE id=" + id;
+        try {
+            return qr.query(sql, new BeanHandler<>(User.class));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 
     @Override
     public int insert(User user) {
-        String sql = "INSERT INTO user(username, password) values(?,?)";
+        String sql = "INSERT INTO user(username, password,email,profilePhoto,balance) values(?,?,?,?,?)";
         try {
-            return qr.update(sql, user.getUsername(), user.getPassword());
+            return qr.update(sql, user.getUsername(), user.getPassword(),user.getEmail(),user.getProfilePhoto(),user.getBalance());
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -48,9 +53,9 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int update(User user) {
-        String sql = "UPDATE user SET username=?&password=? WHERE username=?";
+        String sql = "UPDATE user SET username=?, password=?,email=?,profilePhoto=?,balance=? WHERE id=?";
         try {
-            return qr.update(sql, user.getUsername(),user.getPassword(),user.getUsername());
+            return qr.update(sql,user.getUsername(),user.getPassword(),user.getEmail(),user.getProfilePhoto(),user.getBalance(),user.getId());
         }catch (SQLException e){
             e.printStackTrace();
         }
