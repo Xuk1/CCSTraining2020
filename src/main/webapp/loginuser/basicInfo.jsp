@@ -66,7 +66,7 @@ User user = userDao.findById((int)session.getAttribute("id"));
                                     上传头像
                                 </button>
                                 <input class="layui-upload-file" type="file" accept name="file">
-                                <img id="picture" src="<%=user.getProfilePhoto()%>" width="100px" height="100px"/>
+                                <img id="picture" src="/<%=user.getProfilePhoto()%>" width="100px" height="100px"/>
                                 <span class="loading"></span>
                             </div>
                         </div>
