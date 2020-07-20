@@ -25,15 +25,15 @@
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
         <a href="javascript:;">
-          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          <img id="photo" src="http://t.cn/RCzsdCq" class="layui-nav-img">
           <%=session.getAttribute("username")%>
         </a>
         <dl class="layui-nav-child">
-          <dd><a href="">基本资料</a></dd>
+          <dd><a href="javascript:">基本资料</a></dd>
           
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="/login.jsp">退出</a></li>
+      <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/login.jsp">退出</a></li>
     </ul>
   </div>
   
@@ -55,7 +55,7 @@
           <a href="javascript:;">租客管理</a>
         </li>
         <li class="layui-nav-item">
-          <a href="javascript:;">租客订单</a>
+          <a href="javascript:;">我的订单</a>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">反馈</a>
@@ -66,11 +66,7 @@
   
   <div id="main" class="layui-body">
     <iframe src="home.html" id="ifr" style="width:100%;height:100%"></iframe>
-  </div>
-  
-  <div class="layui-footer" >
-    <!-- 底部固定区域 -->
-    © layui.com - 底部固定区域
+    
   </div>
 </div>
 
@@ -85,7 +81,7 @@ layui.use('element', function(){
     if(text === "租客管理"){
       main.find("#ifr").remove();
       main.append('<iframe src="renter/renterManagement.html" id="ifr" style="width:100%;height:100%"></iframe>');
-    }else if(text === "租客订单"){
+    }else if(text === "我的订单"){
       main.find("#ifr").remove();
       main.append('<iframe src="statistics/orderManagement.html" id="ifr" style="width:100%;height:100%"></iframe>');
     }else if(text === "反馈"){
@@ -94,8 +90,21 @@ layui.use('element', function(){
     }else if(text === "主页"){
       main.find("#ifr").remove();
       main.append('<iframe src="home.html" id="ifr" style="width:100%;height:100%"></iframe>')
+    }else if(text === "我的房产"){
+      main.find("#ifr").remove();
+      main.append('<iframe src="house/houseManagement.html" id="ifr" style="width:100%;height:100%"></iframe>')
+    }else if(text === "添加房产"){
+      main.find("#ifr").remove();
+      main.append('<iframe src="house/addHouse.html" id="ifr" style="width:100%;height:100%"></iframe>')
+    }else if(text === "基本资料"){
+      main.find("#ifr").remove();
+      main.append('<iframe src="loginuser/basicInfo.jsp" id="ifr" style="width:100%;height:100%"></iframe>')
+      //main.append('<iframe src="user/userManagement.html" id="ifr" style="width:100%;height:100%"></iframe>')
+    }else if(text === "主页"){
+      main.find("#ifr").remove();
+      main.append('<iframe src="home.html" id="ifr" style="width:100%;height:100%"></iframe>')
     }
-  });
+  })
 });
 </script>
 </body>
