@@ -84,7 +84,7 @@
   </div>
 
   <div id="main" class="layui-body">
-    <iframe src="home.html" id="ifr" style="width:100%;height:100%"></iframe>
+    <iframe src="home/home.html" id="ifr" style="width:100%;height:100%"></iframe>
     
   </div>
 </div>
@@ -108,7 +108,7 @@ layui.use('element', function(){
       main.append('<iframe src="feedback/UserFeedback.html" id="ifr" style="width:100%;height:100%"></iframe>')
     }else if(text === "主页"){
       main.find("#ifr").remove();
-      main.append('<iframe src="home.html" id="ifr" style="width:100%;height:100%"></iframe>')
+      main.append('<iframe src="home/home.html" id="ifr" style="width:100%;height:100%"></iframe>')
     }else if(text === "我的房产"){
       main.find("#ifr").remove();
       main.append('<iframe src="house/houseManagement.html" id="ifr" style="width:100%;height:100%"></iframe>')
@@ -121,7 +121,7 @@ layui.use('element', function(){
       //main.append('<iframe src="user/userManagement.html" id="ifr" style="width:100%;height:100%"></iframe>')
     }else if(text === "主页"){
       main.find("#ifr").remove();
-      main.append('<iframe src="home.html" id="ifr" style="width:100%;height:100%"></iframe>')
+      main.append('<iframe src="home/home.html" id="ifr" style="width:100%;height:100%"></iframe>')
     }
   })
 });

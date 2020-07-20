@@ -3,7 +3,7 @@ package com.ilovemengmei.ccstraining2020.servlet;
 import com.ilovemengmei.ccstraining2020.dao.UserDao;
 import com.ilovemengmei.ccstraining2020.dao.impl.UserDaoImpl;
 import com.ilovemengmei.ccstraining2020.domain.User;
-import com.ilovemengmei.ccstraining2020.util.HashUtil;
+import com.ilovemengmei.ccstraining2020.util.SHAUtil;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +21,7 @@ public class LoginServlet extends BaseServlet {
         String password = request.getParameter("password");
         User user = userDao.findByUsername(username);
         if(user != null){
-            if(!HashUtil.md5(password).equalsIgnoreCase(user.getPassword())){
+            if(!SHAUtil.hash(password).equalsIgnoreCase(user.getPassword())){
                 response.setStatus(0);
             }else{
                 request.getSession().setAttribute("username",username);
