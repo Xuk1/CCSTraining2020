@@ -63,9 +63,9 @@
 	</style>
 </head>
 <body class="loginBody" style="background:#1d2024">
-	<form class="layui-form login-form" method="post" action="/register">
+	<form class="layui-form login-form" method="post" action="">
 		<div class="login_face">
-			<img src="http://admin.dataoke.com/images/face.jpg" class="userAvatar">
+			<img src="logo1.jpg" class="userAvatar">
 		</div>
 		<div class="layui-form-item input-item">
 			<label for="userName">用户名</label>
@@ -84,9 +84,9 @@
 			<input name="password_verify" type="password_verify" lay-verify="required" placeholder="请确认密码" autocomplete="off" id="password_verify" class="layui-input">
 		</div>
 		<div class="layui-form-item">
-			<button class="layui-btn layui-block" lay-filter="login" lay-submit="">注册</button>
+			<button class="layui-btn layui-block" lay-filter="register" lay-submit="">注册</button>
 		</div>
-		已有账户？<a href="/login.jsp">点击登录</a>
+		已有账户？<a href="${pageContext.request.contextPath}/login.jsp">点击登录</a>
 	</form>
 	<script type="text/javascript" src="layui/layui.js"></script>
 
@@ -97,20 +97,33 @@
             $ = layui.jquery;
 
             //登录按钮
-            form.on("submit(login)",function(){
+            form.on("submit(register)",function(){
                 $(this).text("注册中...").attr("disabled","disabled").addClass("layui-disabled");
 
                 var _this = $(this);
                 $.post('/register',$('.login-form').serialize(),function (data) {
 					if (data.status == 0){
-					    $('.err-msg').html(data.msg);
-                        _this.text("注册").attr("disabled",false).removeClass("layui-disabled");
+						layer.open({
+							title: '萌租房'
+							,content: data.msg
+							,btn: ['确定']
+							,btn1: function(){
+								location.reload();
+							}
+						});
                     }
                     else{
-                        window.location.href = "/";
+						layer.open({
+							title: '萌租房'
+							,content: '注册成功！'
+							,btn: ['确定']
+							,btn1: function(){
+								location.href = "/login.jsp";
+							}
+						});
 					}
-                
-                });
+
+                },"json");
                 return false;
             });
 

@@ -2,17 +2,34 @@ package com.ilovemengmei.ccstraining2020.domain;
 
 public class House {
 
-    int id;
-    int ownerId;
-    String address;
-    int floor;
-    int defaultRent;
-    int area;
-    int propertyCosts;
-    int residents;
-    boolean ifCertified;
-    String registerDate;
-    String more;
+    private int id;
+    private int ownerId;
+    private String address;
+    private int floor;
+    private int defaultRent;
+    private int area;
+    private int propertyCosts;
+    private String residents;
+    private boolean ifCertified;
+    private String registerDate;
+    private String more;
+
+    public House() {
+
+    }
+
+    public House(int ownerId, String address, int floor, int defaultRent, int area, int propertyCosts, String residents, boolean ifCertified, String registerDate, String more) {
+        this.ownerId = ownerId;
+        this.address = address;
+        this.floor = floor;
+        this.defaultRent = defaultRent;
+        this.area = area;
+        this.propertyCosts = propertyCosts;
+        this.residents = residents;
+        this.ifCertified = ifCertified;
+        this.registerDate = registerDate;
+        this.more = more;
+    }
 
     public int getId() {
         return id;
@@ -70,11 +87,11 @@ public class House {
         this.propertyCosts = propertyCosts;
     }
 
-    public int getResidents() {
+    public String getResidents() {
         return residents;
     }
 
-    public void setResidents(int residents) {
+    public void setResidents(String residents) {
         this.residents = residents;
     }
 

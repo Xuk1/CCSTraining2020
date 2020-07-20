@@ -1,6 +1,7 @@
 package com.ilovemengmei.ccstraining2020.servlet;
 
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,6 +21,10 @@ public class BaseServlet extends HttpServlet {
         response.setHeader("Access-Control-Allow-Headers", "*");
         /* 是否携带cookie */
         response.setHeader("Access-Control-Allow-Credentials", "true");
+    }
+
+    public void preprocess(HttpServletRequest request){
+
     }
 
     public void write(HttpServletResponse response,String json){

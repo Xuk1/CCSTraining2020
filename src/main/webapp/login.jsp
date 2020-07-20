@@ -65,7 +65,7 @@
 <body class="loginBody" style="background:#1d2024">
 	<form class="layui-form login-form" method="post" action="/login">
 		<div class="login_face">
-			<img src="http://admin.dataoke.com/images/face.jpg" class="userAvatar">
+			<img src="logo1.jpg" class="userAvatar">
 		</div>
 		<div class="layui-form-item input-item">
 			<label for="userName">用户名</label>

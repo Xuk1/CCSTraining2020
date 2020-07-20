@@ -104,6 +104,7 @@ layui.use('element', function(){
     }
   })
 });
+</script>
 <script type="text/javascript" charset="utf-8"  src="https://files.cnblogs.com/files/liuzhou1/L2Dwidget.0.min.js"></script>
 <script type="text/javascript" charset="utf-8"  src="https://files.cnblogs.com/files/liuzhou1/L2Dwidget.min.js"></script>
 <script type="text/javascript">
@@ -116,7 +117,6 @@ layui.use('element', function(){
       "vOffset": 0
     }
   });
-</script>
 </script>
 </body>
 </html>

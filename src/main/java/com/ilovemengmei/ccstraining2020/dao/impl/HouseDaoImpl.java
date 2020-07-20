@@ -42,8 +42,18 @@ public class HouseDaoImpl implements HouseDao {
     }
 
     @Override
-    public int insert(House obj) {
-        return 0;
+    public int insert(House house) {
+        String sql = "INSERT INTO house ( ownerId, address, floor, defaultRent" +
+                ", area,propertyCosts,residents,ifCertified,registerDate,more )" +
+                " values(?,?,?,?,?,?,?,?,?,?)";
+        try {
+            return qr.update(sql,house.getOwnerId(),house.getAddress(),house.getFloor()
+            ,house.getDefaultRent(),house.getArea(),house.getPropertyCosts(),house.getResidents(),
+                    house.isIfCertified(),house.getRegisterDate(),house.getMore());
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     @Override
@@ -53,6 +63,12 @@ public class HouseDaoImpl implements HouseDao {
 
     @Override
     public int delete(int id) {
-        return 0;
+        String sql = "DELETE FROM house WHERE id=?";
+        try {
+            return qr.execute(sql,id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 }
