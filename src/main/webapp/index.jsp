@@ -61,23 +61,23 @@
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree">
         <li class="layui-nav-item">
-          <a href="javascript:;">主页</a>
+          <a href="javascript:;"><i class="layui-icon">&#xe656;</i>  主页</a>
         </li>
         <li class="layui-nav-item">
-          <a class="" href="javascript:;">房产管理</a>
+          <a class="" href="javascript:;"><i class="layui-icon">&#xe68e;</i>  房产管理</a>
           <dl class="layui-nav-child">
             <dd><a href="javascript:;">我的房产</a></dd>
             <dd><a href="javascript:;">添加房产</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
-          <a href="javascript:;">租客管理</a>
+          <a href="javascript:;"><i class="layui-icon">&#xe66f;</i>  租客管理</a>
         </li>
         <li class="layui-nav-item">
-          <a href="javascript:;">我的订单</a>
+          <a href="javascript:;"><i class="layui-icon">&#xe698;</i>  我的订单</a>
         </li>
         <li class="layui-nav-item">
-          <a href="javascript:;">反馈</a>
+          <a href="javascript:;"><i class="layui-icon">&#xe606;</i>  反馈</a>
         </li>
       </ul>
     </div>
@@ -90,6 +90,10 @@
 </div>
 
 <script>
+  String.prototype.endWith=function(endStr){
+    var d=this.length-endStr.length;
+    return (d>=0&&this.lastIndexOf(endStr) === d);
+  };
 //JavaScript代码区域
 layui.use('element', function(){
   var element = layui.element;
@@ -97,25 +101,25 @@ layui.use('element', function(){
   $("a").on('click',function(){
     const text = $(this).text();
     const main = $("#main");
-    if(text === "租客管理"){
+    if(text.endWith("租客管理")){
       main.find("#ifr").remove();
       main.append('<iframe src="renter/renterManagement.html" id="ifr" style="width:100%;height:100%"></iframe>');
-    }else if(text === "我的订单"){
+    }else if(text.endWith("我的订单")){
       main.find("#ifr").remove();
       main.append('<iframe src="statistics/orderManagement.html" id="ifr" style="width:100%;height:100%"></iframe>');
-    }else if(text === "反馈"){
+    }else if(text.endWith("反馈")){
       main.find("#ifr").remove();
       main.append('<iframe src="feedback/UserFeedback.html" id="ifr" style="width:100%;height:100%"></iframe>')
-    }else if(text === "主页"){
+    }else if(text.endWith("主页")){
       main.find("#ifr").remove();
       main.append('<iframe src="home/home.html" id="ifr" style="width:100%;height:100%"></iframe>')
-    }else if(text === "我的房产"){
+    }else if(text.endWith("我的房产")){
       main.find("#ifr").remove();
       main.append('<iframe src="house/houseManagement.html" id="ifr" style="width:100%;height:100%"></iframe>')
-    }else if(text === "添加房产"){
+    }else if(text.endWith("添加房产")){
       main.find("#ifr").remove();
       main.append('<iframe src="house/addHouse.html" id="ifr" style="width:100%;height:100%"></iframe>')
-    }else if(text === "基本资料"){
+    }else if(text.endWith("基本资料")){
       main.find("#ifr").remove();
       main.append('<iframe src="loginuser/basicInfo.jsp" id="ifr" style="width:100%;height:100%"></iframe>')
       //main.append('<iframe src="user/userManagement.html" id="ifr" style="width:100%;height:100%"></iframe>')
