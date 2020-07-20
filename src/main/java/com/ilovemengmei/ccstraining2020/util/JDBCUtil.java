@@ -14,7 +14,7 @@ public class JDBCUtil {
         try {
             dataSource = new ComboPooledDataSource();
             dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
-            dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai&characterEncoding=UTF-8");
+            dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/test?useSSL=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8");
             dataSource.setUser("root");
             dataSource.setPassword("root");
             dataSource.setInitialPoolSize(5);
