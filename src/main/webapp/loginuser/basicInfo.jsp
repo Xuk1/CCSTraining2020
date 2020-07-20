@@ -20,6 +20,7 @@
 UserDao userDao = new UserDaoImpl();
 User user = userDao.findById((int)session.getAttribute("id"));
 %>
+<div class="layui-anim layui-anim-upbit">
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
     <legend>我的个人资料</legend>
 </fieldset>
@@ -162,5 +163,6 @@ User user = userDao.findById((int)session.getAttribute("id"));
         });
     });
 </script>
+</div>
 </body>
 </html>
