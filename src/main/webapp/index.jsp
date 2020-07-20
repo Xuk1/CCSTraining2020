@@ -33,7 +33,7 @@
           
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="/login.jsp">退出</a></li>
+      <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/login.jsp">退出</a></li>
     </ul>
   </div>
   
@@ -41,6 +41,9 @@
     <div class="layui-side-scroll">
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree">
+        <li class="layui-nav-item">
+          <a href="javascript:;">主页</a>
+        </li>
         <li class="layui-nav-item">
           <a class="" href="javascript:;">房产管理</a>
           <dl class="layui-nav-child">
@@ -52,11 +55,7 @@
           <a href="javascript:;">租客管理</a>
         </li>
         <li class="layui-nav-item">
-          <a href="javascript:;">统计报表</a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;">租客订单</a></dd>
-            <dd><a href="javascript:;">我的账本</a></dd>
-          </dl>
+          <a href="javascript:;">我的订单</a>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">反馈</a>
@@ -87,7 +86,7 @@ layui.use('element', function(){
     if(text === "租客管理"){
       main.find("#ifr").remove();
       main.append('<iframe src="renter/renterManagement.html" id="ifr" style="width:100%;height:100%"></iframe>');
-    }else if(text === "租客订单"){
+    }else if(text === "我的订单"){
       main.find("#ifr").remove();
       main.append('<iframe src="statistics/orderManagement.html" id="ifr" style="width:100%;height:100%"></iframe>');
     }else if(text === "反馈"){
@@ -104,8 +103,11 @@ layui.use('element', function(){
       main.append('<iframe src="house/addHouse.html" id="ifr" style="width:100%;height:100%"></iframe>')
     }else if(text === "基本资料"){
       main.find("#ifr").remove();
-      main.append('<iframe src="loginuser/basicInfo.jsp" id="basicInfo" style="width:100%;height:100%"></iframe>')
+      main.append('<iframe src="loginuser/basicInfo.jsp" id="ifr" style="width:100%;height:100%"></iframe>')
       //main.append('<iframe src="user/userManagement.html" id="ifr" style="width:100%;height:100%"></iframe>')
+    }else if(text === "主页"){
+      main.find("#ifr").remove();
+      main.append('<iframe src="home.html" id="ifr" style="width:100%;height:100%"></iframe>')
     }
   })
 });
