@@ -65,7 +65,7 @@
   </div>
   
   <div id="main" class="layui-body">
-    <!-- 内容主体区域 -->
+    <iframe src="home.html" id="ifr" style="width:100%;height:100%"></iframe>
     
   </div>
 </div>
@@ -92,7 +92,7 @@ layui.use('element', function(){
       main.append('<iframe src="home.html" id="ifr" style="width:100%;height:100%"></iframe>')
     }else if(text === "我的房产"){
       main.find("#ifr").remove();
-      main.append('<iframe src="house/houseManager.html" id="ifr" style="width:100%;height:100%"></iframe>')
+      main.append('<iframe src="house/houseManagement.html" id="ifr" style="width:100%;height:100%"></iframe>')
     }else if(text === "添加房产"){
       main.find("#ifr").remove();
       main.append('<iframe src="house/addHouse.html" id="ifr" style="width:100%;height:100%"></iframe>')

@@ -21,7 +21,7 @@
 
 	<div>
 		<div class="layui-inline">
-			<input type="text" name="title" required lay-verify="required" placeholder="请输入房产关键词" autocomplete="off" class="layui-input" style="width:125px;" >
+			<input type="text" name="title" required lay-verify="required" placeholder="请输入房产关键词" autocomplete="off" class="layui-input" style="width:180px;" >
 		</div>
 		<div class="layui-inline">
 			<button type="button" class="layui-btn"  id="findByAddress">查找房产</button>
@@ -69,23 +69,22 @@
 						}
 						,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
 						,cols: [[
-							 {field:'ownerid', width:180, title: '序号', sort: true}
-							,{field:'address', width:180, title: '地址'}
+							 {field:'id', width:75, title: '序号', sort: true}
+							,{field:'address', width:100, title: '地址'}
 							,{field:'floor', width:80, title: '楼层'}
-							,{field:'defaultRent', width:135, title: '预期出租金额/月'}
-							,{field:'area', width:87, title: '建筑面积'}
-							,{field:'propertyCosts', width:151, title: '预期物业管理费/月'}
-							,{field:'residents', width:143, title: '建议居住人数/人'}
-							,{field:'ifCertified', width:180, title: '是否愿意接受平台认证'}
-							,{field:'registerDate', width:87, title: '添加日期'}
-							,{field:'more', width:180, title: '特殊备注'}
-							,{fixed: 'right', width:250, title: '操作',align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
+							,{field:'defaultRent', width:150, title: '预期出租金额/月'}
+							,{field:'area', width:100, title: '建筑面积'}
+							,{field:'propertyCosts', width:150, title: '预期物业管理费/月'}
+							,{field:'residents', width:150, title: '建议居住人数/人'}
+							,{field:'ifCertified', width:170, title: '是否愿意接受平台认证'}
+							,{field:'registerDate', width:120, title: '添加日期'}
+							,{field:'more', width:120, title: '特殊备注'}
 						]]
 					});
 
 				});
 			};
-			tableInit("../houseManager" +　window.location.search);
+			tableInit("../house" +　window.location.search);
 
 			//根据id查询，重新渲染表格，事件和tableInit()绑定
 			layui.use('layer', function(){
@@ -95,46 +94,9 @@
 				//jQuery
 				$("#findByAddress").on('click',function(){
 					var input = $(this).parent().parent().find(".layui-input").val();
-					tableInit("../houseManager?keyword=" + input);
+					tableInit("../house?keyword=" + input);
 				})
 			});
-
-
-			//监听工具条
-			table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
-				var data = obj.data; //获得当前行数据
-				var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
-				var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
-
-				if(layEvent === 'detail'){ //查看
-					//do somehing:跳转到一个详情页面
-					window.location.href="user-add.html";
-				} else if(layEvent === 'del'){ //删除
-					layer.confirm('真的删除行么', function(index){
-						obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
-						layer.close(index);
-						//向服务端发送删除指令:ajax
-						var id = data.id;
-						$.ajax({
-							url:"http://localhost:9999/house/houseManger/"+id,
-							success:function(res){
-								console.log(res);
-							}
-						})
-					});
-				} else if(layEvent === 'edit'){ //编辑
-					//do something 跳转到详情编辑界面
-
-					//同步更新缓存对应的值
-					obj.update({
-						username: '123'
-						,title: 'xxx'
-					});
-				} else if(layEvent === 'LAYTABLE_TIPS'){
-					layer.alert('Hi，头部工具栏扩展的右侧图标。');
-				}
-			});
-
 		</script>
 </body>
 </html>
