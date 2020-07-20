@@ -17,7 +17,6 @@
     response.setHeader("Location", site);
   }
 %>
-	
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
     <div class="layui-logo">房屋租赁系统-商户版</div>
@@ -36,7 +35,6 @@
       <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/login.jsp">退出</a></li>
     </ul>
   </div>
-  
   <div class="layui-side layui-bg-black">
     <div class="layui-side-scroll">
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
@@ -59,19 +57,17 @@
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">反馈</a>
-        </li>s
+        </li>
       </ul>
     </div>
   </div>
-  
+
   <div id="main" class="layui-body">
     <iframe src="home.html" id="ifr" style="width:100%;height:100%"></iframe>
     
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
-<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.js"></script>
+
 <script>
 //JavaScript代码区域
 layui.use('element', function(){
@@ -108,6 +104,19 @@ layui.use('element', function(){
     }
   })
 });
+<script type="text/javascript" charset="utf-8"  src="https://files.cnblogs.com/files/liuzhou1/L2Dwidget.0.min.js"></script>
+<script type="text/javascript" charset="utf-8"  src="https://files.cnblogs.com/files/liuzhou1/L2Dwidget.min.js"></script>
+<script type="text/javascript">
+  L2Dwidget.init({"display": {
+      "superSample": 2,
+      "width": 200,
+      "height": 400,
+      "position": "right",
+      "hOffset": 0,
+      "vOffset": 0
+    }
+  });
+</script>
 </script>
 </body>
 </html>
