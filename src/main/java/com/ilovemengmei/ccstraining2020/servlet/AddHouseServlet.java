@@ -27,7 +27,7 @@ public class AddHouseServlet extends BaseServlet{
         int area  = Integer.parseInt(request.getParameter("area"));
         int propertyCosts  = Integer.parseInt(request.getParameter("propertyCosts"));
         String residents  = request.getParameter("residents");
-        boolean ifCertified  = Boolean.parseBoolean(request.getParameter("ifCertified"));
+        boolean ifCertified  = Integer.parseInt(request.getParameter("ifCertified")) == 1;
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
         String registerDate  = f.format(new Date());
         String more  = request.getParameter("more");
