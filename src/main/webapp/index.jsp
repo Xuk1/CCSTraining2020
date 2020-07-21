@@ -53,7 +53,7 @@ if(session.getAttribute("username") == null) {
           
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/login.jsp">退出</a></li>
+      <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/login.jsp" onclick="<%session.setAttribute("username",null);session.setAttribute("id",0);%>">退出</a></li>
     </ul>
   </div>
   <div class="layui-side layui-bg-black">
