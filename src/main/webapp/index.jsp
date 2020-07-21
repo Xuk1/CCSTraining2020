@@ -2,6 +2,13 @@
 <%@ page import="com.ilovemengmei.ccstraining2020.dao.UserDao" %>
 <%@ page import="com.ilovemengmei.ccstraining2020.dao.impl.UserDaoImpl" %>
 <%@ page import="com.ilovemengmei.ccstraining2020.domain.User" %>
+<%
+if(session.getAttribute("username") == null) {
+  String site = "/main.html";
+  response.setStatus(response.SC_MOVED_TEMPORARILY);
+  response.setHeader("Location", site);
+}else{
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,16 +34,9 @@
 </head>
 <body class="layui-layout-body">
 <%
-  String profilePhoto = "";
-  if(session.getAttribute("username") == null) {
-    String site = "/main.html";
-    response.setStatus(response.SC_MOVED_TEMPORARILY);
-    response.setHeader("Location", site);
-  }else{
-    UserDao userDao = new UserDaoImpl();
-    User user = userDao.findById((int)session.getAttribute("id"));
-    profilePhoto = user.getProfilePhoto();
-  }
+  UserDao userDao = new UserDaoImpl();
+  User user = userDao.findById((int)session.getAttribute("id"));
+  String profilePhoto = user.getProfilePhoto();
 %>
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
@@ -129,3 +129,6 @@ layui.use('element', function(){
 </script>
 </body>
 </html>
+<%
+}
+%>
